@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Untuk Cinta dalam Hidupku</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      min-height: 100vh;
+      background: radial-gradient(ellipse at center, #2d1b69 0%, #0c0c2e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .container {
+      max-width: 350px;
+      width: 100%;
+      z-index: 10;
+    }
+    .page {
+      background: linear-gradient(135deg, #ffc1cc 0%, #ff9aa2 50%, #ff8a95 100%);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      display: none;
+      min-height: 450px;
+      position: relative;
+      z-index: 10;
+    }
+    .page.active {
+      display: block;
+    }
+    .page-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .page-subtitle {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 25px;
+      line-height: 1.4;
+    }
+    .photo-frame {
+      width: 200px;
+      height: 150px;
+      margin: 0 auto 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .quote {
+      font-family: 'Dancing Script', cursive;
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 15px;
+      font-weight: 600;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    .text {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .heart {
+      font-size: 20px;
+      margin: 15px 0;
+    }
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .page-counter {
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .final-page {
+      background: linear-gradient(135deg, #e91e63 0%, #ad1457 100%);
+    }
+    .final-message {
+      font-family: 'Dancing Script', cursive;
+      font-size: 24px;
+      color: white;
+      line-height: 1.6;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .star {
+      position: absolute;
+      color: white;
+      animation: twinkle 2s infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    #playBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="stars-container"></div>
+
+  <div class="container">
+    <div class="page active" id="page1">
+      <div class="page-title">Hai Sayangku</div>
+      <div class="page-subtitle">ak buat cerita kecil ini hehe, tekan emoji lop sebelum baca ya</div>
+      <div class="photo-frame">
+        <img src="https://i.imgur.com/IKZzpHM.jpeg" alt="Foto 1">
+      </div>
+      <div class="quote">"bersama kamu menjadi tenang."</div>
+      <div class="text">Setiap hariku menjadi lebih berwarna kalo sama kamu xixi.</div>
+      <div class="heart">❤️</div>
+      <div class="navigation">
+        <button class="btn" disabled>Prev</button>
+        <div class="page-counter">1 / 6</div>
+        <button class="btn" onclick="showPage(2)">Next</button>
+      </div>
+    </div>
+
+    <div class="page" id="page2">
+      <div class="page-title">kecantikan kamu</div>
+      <div class="page-subtitle">aku lebih suka kamu di banding km sk ak</div>
+      <div class="photo-frame">
+        <img src="https://i.imgur.com/ghZFNFa.jpeg" alt="Foto 2">
+      </div>
+      <div class="quote">"sayang kamu."</div>
+      <div class="text">Gak peduli kamu lagi gimana, di mata aku kamu selalu sempurna. Semua kekurangan kamu malah jadi hal yang bikin aku semakin sayang.
+✨.</div>
+      <div class="heart">💖</div>
+      <div class="navigation">
+        <button class="btn" onclick="showPage(1)">Prev</button>
+        <div class="page-counter">2 / 6</div>
+        <button class="btn" onclick="showPage(3)">Next</button>
+      </div>
+    </div>
+
+    <div class="page" id="page3">
+      <div class="page-title">senyum kamu</div>
+      <div class="page-subtitle">lebih manis daripada gula</div>
+      <div class="photo-frame">
+        <img src="https://i.imgur.com/duiityN.jpeg" alt="Foto 3">
+      </div>
+      <div class="quote">"senyum mu= buat sanhek!"</div>
+      <div class="text">Setiap kali kamu tersenyum, dunia jadi lebih indah. Senyummu adalah obat untuk semua lelah dan sedihku.
+💖</div>
+      <div class="heart">😘</div>
+      <div class="navigation">
+        <button class="btn" onclick="showPage(2)">Prev</button>
+        <div class="page-counter">3 / 6</div>
+        <button class="btn" onclick="showPage(4)">Next</button>
+      </div>
+    </div>
+
+    <div class="page" id="page4">
+      <div class="page-title">Momen Kita</div>
+      <div class="page-subtitle">Semua tentang kamu aku simpen</div>
+      <div class="photo-frame">
+        <img src="https://i.imgur.com/IfPGHoG.jpeg" alt="Foto 4">
+      </div>
+      <div class="quote">"Momen kecil sama kamu = momen gede buat aku."</div>
+      <div class="text">yaaa momen momen koll sih sukaa kalo kamu ketawa rillll</div>
+      <div class="heart">💘</div>
+      <div class="navigation">
+        <button class="btn" onclick="showPage(3)">Prev</button>
+        <div class="page-counter">4 / 6</div>
+        <button class="btn" onclick="showPage(5)">Next</button>
+      </div>
+    </div>
+
+    <div class="page" id="page5">
+      <div class="page-title">Untukmu</div>
+      <div class="page-subtitle">Kata-kata dari hati aku</div>
+      <div class="photo-frame">
+        <img src="https://i.imgur.com/VWzIsQF.jpeg" alt="Foto 5">
+      </div>
+      <div class="quote">"Aku jatuh cinta tiap hari, ke orang yang sama: kamu."</div>
+      <div class="text">Gak akan pernah capek buat bilang sayang. sayangg kamuuu banget.</div>
+      <div class="heart">💞</div>
+      <div class="navigation">
+        <button class="btn" onclick="showPage(4)">Prev</button>
+        <div class="page-counter">5 / 6</div>
+        <button class="btn" onclick="showPage(6)">Next</button>
+      </div>
+    </div>
+
+    <div class="page final-page" id="page6">
+      <div class="page-title">Terakhir Tapi Bukan akhir cerita ini...</div>
+      <div class="final-message">
+        Aku cuma mau bilang... <br><br>
+        AKU CINTA KAMU, SELALU SAYANG, HARI INI BESOK BULAN DEPAN TAHUN DEPAN SELAMANYA. <br><br>
+        Makasih udah jadi alasanku bahagia. makasih ya sayangg 💌
+      </div>
+<div id="page7" style="display: none; text-align: center; font-family: 'Poppins', sans-serif; padding: 30px; color: #fff;">
+  <h1 style="font-family: 'Dancing Script', cursive; font-size: 40px;">🌸 Bunga Abadi 🌸</h1>
+  
+  <iframe width="300" height="170" src="https://www.youtube.com/embed/fmduyMSWFfQ?autoplay=1&loop=1&playlist=fmduyMSWFfQ" 
+    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen 
+    style="border-radius: 10px; margin: 20px 0;">
+  </iframe>
+
+  <img src="https://i.imgur.com/F7vUlMc.jpeg" alt="Cover Bunga Abadi" 
+    style="max-width: 80%; border-radius: 20px; box-shadow: 0 0 20px rgba(255,255,255,0.2); margin: 20px 0;">
+
+  <div style="white-space: pre-wrap; margin-top: 30px; font-size: 16px; line-height: 1.8;">
+    Ku persembahkan bunga<br>
+    Abadi yang kupetik untuknya<br>
+    Dalam perjalanan menuju<br>
+    Keabadian hidup<br><br>
+
+    Hidup tiada duka<br>
+    Hidup tiada lara<br><br>
+
+    Ku telah menyadari<br>
+    Dirinyalah yang pantas miliki<br>
+    Bunga abadi yang t’lah kusimpan<br>
+    Setelah sekian lama<br>
+    Terpendam jauh dalam diriku<br>
+    Di dalam hidupku<br><br>
+
+    Oh<br>
+    Apalah arti dari semua yang tercipta<br>
+    Tanpa kehadirannya di sini<br><br>
+
+    Oh-oh<br>
+    Ku menembus ruang dan waktu<br>
+    Terjalin gelak tawa, sedih, dan merayu<br>
+    Bersanding bersama dirinya<br><br>
+
+    Ho-oh<br>
+    Hanya satu yang ’kan kupinta<br>
+    Menjaga bunga abadi yang t’lah kuberi<br>
+    Di dalam perjalanan hidupnya<br><br>
+
+    Oh-oh<br>
+    Ku menembus ruang dan waktu<br>
+    Terjalin gelak tawa, sedih, dan merayu<br>
+    Bersanding bersama dirinya<br><br>
+
+    Oh-oh<br>
+    Hanya satu yang ’kan kupinta<br>
+    Menjaga bunga abadi yang t’lah kuberi<br>
+    Satu dan selamanya<br>
+    Di dalam perjalanan hidupnya<br><br>
+
+    Oh-oh<br>
+    Ku persembahkan bunga<br>
+    Abadi yang kupetik untuknya
+  </div>
+
+  <div style="margin-top: 40px;">
+    <button onclick="showPage(6)" style="padding: 10px 20px; border: none; border-radius: 8px; background: #ff8fa3; color: white; font-weight: bold; cursor: pointer;">⬅ Sebelumnya</button>
+    <button onclick="showPage(1)" style="padding: 10px 20px; border: none; border-radius: 8px; background: #8ac6d1; color: white; font-weight: bold; cursor: pointer; margin-left: 10px;">🏠 Kembali ke Awal</button>
+  </div>
+</div>
+      <div class="navigation">
+        <button class="btn" onclick="showPage(5)">Prev</button>
+        <div class="page-counter">6 / 6</div>
+        <button class="btn" disabled>Next</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="https://files.catbox.moe/t9cbr1.mp3" type="audio/mpeg">
+  </audio>
+  <button id="playBtn" onclick="toggleMusic()">🤍</button>
+
+  <script>
+    function showPage(pageNum) {
+      for (let i = 1; i <= 6; i++) {
+        document.getElementById('page' + i).classList.remove('active');
+      }
+      document.getElementById('page' + pageNum).classList.add('active');
+    }
+
+    const starContainer = document.getElementById("stars-container");
+    const jumlahBintang = 50;
+    for (let i = 0; i < jumlahBintang; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.fontSize = (Math.random() * 8 + 4) + "px";
+      star.style.animationDelay = Math.random() * 3 + "s";
+      star.innerHTML = Math.random() > 0.5 ? "✦" : "✧";
+      starContainer.appendChild(star);
+    }
+
+    const music = document.getElementById("bgMusic");
+    const playBtn = document.getElementById("playBtn");
+
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+        playBtn.innerHTML = "💖";
+      } else {
+        music.pause();
+        playBtn.innerHTML = "🤍";
+      }
+    }
+  </script>
+</body>
+</html>
